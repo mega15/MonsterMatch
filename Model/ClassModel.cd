@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Model.Character">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACRAAAAAAAAAAAAAAAAAQAAIAAAAAAAgAAAQABABA=</HashCode>
+      <FileName>Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Game">
+    <Position X="4.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAgAEABAAAAAAAAAAA=</HashCode>
+      <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Match">
+    <Position X="10.5" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BgBCAAAAAAAAAAAAAACAADQAAAAAAAAAAAQAAAEAAAA=</HashCode>
+      <FileName>Match.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Player">
+    <Position X="7.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAAAQAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.PlayerMatchBid">
+    <Position X="10.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAAAAAEAAAAAAAAAAAAAAAAAAAAAAQAAAAACAA=</HashCode>
+      <FileName>PlayerMatchBid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.PlayersByGame">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAQgAAAAAEAAAAAAAgAAAAAAAAICQAACAA=</HashCode>
+      <FileName>PlayersByGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Weapon">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACBAAAAAAAAAAAAAAAAAQAAIAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

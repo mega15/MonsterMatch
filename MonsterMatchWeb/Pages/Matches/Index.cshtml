@@ -1,0 +1,52 @@
+﻿@page
+@model MonsterMatchWeb.Pages.Matches.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Match[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Match[0].Character1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Match[0].Character2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Match[0].Winner)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Match) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Character1.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Character2.Name)
+            </td>
+            <td>
+                @Html.Label(item.Winner != null ? item.Winner.Name:"")
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,51 @@
+﻿@page
+@using Model
+@model MonsterMatchWeb.Pages.PlayersMatchBids.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>PlayerMatchBid</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PlayerMatchBid.Id" />
+            <div class="form-group">
+                <label asp-for="MatchId" class="control-label"></label>
+                <select asp-for="MatchId" class="form-control" asp-items="ViewBag.MatchId"></select>
+                <span asp-validation-for="MatchId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CharacterId" class="control-label"></label>
+                <select asp-for="CharacterId" class="form-control" asp-items="ViewBag.CharacterId"></select>
+                <span asp-validation-for="CharacterId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlayerMatchBid.BidAmount" class="control-label"></label>
+                <input asp-for="PlayerMatchBid.BidAmount" class="form-control" />
+                <span asp-validation-for="PlayerMatchBid.BidAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlayerMatchBid.BidClass" class="control-label"></label>
+                <select asp-for="PlayerMatchBid.BidClass" class="form-control" asp-items="@Html.GetEnumSelectList<BidClass>()"></select>
+                <span asp-validation-for="PlayerMatchBid.BidClass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,172 @@
+﻿@page
+@using Model
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @Model.LoginName</h1>
+
+    @if (Model.OldGamesData != null)
+    {
+        <h2>This is the results of previous games</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <label>Game</label>
+                    </th>
+                    <th>
+                        <label>Points</label>
+                    </th>
+                    <th>
+                        <label>Points position</label>
+                    </th>
+                    <th>
+                        <label>Money</label>
+                    </th>
+                    <th>
+                        <label>Money position</label>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var playerGameData in Model.OldGamesData)
+                {
+                    <tr>
+                        <td>
+                            @playerGameData.Game.Name
+                        </td>
+                        <td>
+                            @playerGameData.Points
+                        </td>
+                        <td>
+                            @playerGameData.PointsPosition
+                        </td>
+                        <td>
+                            @playerGameData.Money
+                        </td>
+                        <td>
+                            @playerGameData.MoneyPosition
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr />
+    }
+
+    <p class="text-info">@Model.Message</p>
+
+    @if (Model.PlayerGameData != null)
+    {
+        var characterTypeImage = AssetsNameResolver.GetImageName(@Model.PlayerGameData.Character.ElementType);
+
+        <h2>You have <span class="text-secondary">@Model.PlayerGameData.Money.ToString()</span> coins to spent on bits</h2>
+        <hr />
+        <h3>Your character and weapons for the active game:</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <h4><span class="text-primary"><b>@Model.PlayerGameData.Character.Name @(@Model.PlayerGameData.Character.CharacterType == CharacterType.Robot ? "Robot" : "Monster")</b></span></h4>
+                <dl>
+                    <dt>Name</dt>
+                    <dd>@Model.PlayerGameData.Character.Name</dd>
+                    <dt>Type</dt>
+                    <dd>@Model.PlayerGameData.Character.CharacterType.ToString()</dd>
+                    <dt>Element</dt>
+                    <dd><img src="~/images/@characterTypeImage" width="40" /></dd>
+                    <dt>Attack</dt>
+                    <dd>@Model.PlayerGameData.Character.Attack.ToString()</dd>
+                    <dt>Life</dt>
+                    <dd>@Model.PlayerGameData.Character.Life.ToString()</dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                @for (int count = 0; count < Model.PlayerGameData.Character.Weapons.Count; count++){
+                    var weapon = Model.PlayerGameData.Character.Weapons.ElementAt(count);
+                    var weaponTypeImage = AssetsNameResolver.GetImageName(weapon.ElementType);
+
+                    <h4><span class="text-primary">@weapon.Name</span></h4>
+                    <dl>
+                        <dt>Element</dt>
+                        <dd><img src="~/images/@weaponTypeImage" width="40" /></dd>
+                        <dt>Attack</dt>
+                        <dd>@weapon.Attack.ToString()</dd>
+                    </dl>
+                }
+            </div>
+            <div class="col-md-4">
+                <img src="@Model.PlayerGameData.Character.ImageUrl" width="350" />
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <input type="hidden" asp-for="CharacterId" />
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <label>No.</label>
+                                </th>
+                                <th>
+                                    <label>Name</label>
+                                </th>
+                                <th>
+                                    <label>Characters</label>
+                                </th>
+                                <th>
+                                    <label>Weapon</label>
+                                </th>
+                                <th>
+                                    <label>Bid</label>
+                                </th>
+                                <th>
+                                    <label>Bid type</label>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (var count = 0; count < Model.GameMatches.Count; count++)
+                            {
+                                var match = Model.GameMatches[count];
+                                var elementTypeImageC1 = AssetsNameResolver.GetImageName(match.Character1.ElementType);
+                                var elementTypeImageC2 = AssetsNameResolver.GetImageName(match.Character2.ElementType);
+
+                                <tr>
+                                    <td>
+                                        <input type="hidden" asp-for="GameMatches[count].Id" />
+                                        <label>@(count + 1)</label>
+                                    </td>
+                                    <td>
+                                        <label>@match.Name</label>
+                                    </td>
+                                    <td>
+                                        <img src="~/images/@elementTypeImageC1" width="40" />
+                                        <img src="@match.Character1.ImageUrl" width="40" /><label> VS </label><img src="@match.Character2.ImageUrl" width="40" />
+                                        <img src="~/images/@elementTypeImageC2" width="40" />
+                                    </td>
+                                    <td>
+                                        <select asp-for="GameMatches[count].WeaponSelectedId" class="form-control" asp-items="ViewBag.WeaponId"></select>
+                                    </td>
+                                    <td>
+                                        <input asp-for="GameMatches[count].BidAmonunt" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <select asp-for="GameMatches[count].BidClass" class="form-control" asp-items="@Html.GetEnumSelectList<BidClass>()"></select>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="form-group mt-2">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>
