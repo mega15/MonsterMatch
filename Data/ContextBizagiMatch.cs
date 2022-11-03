@@ -46,6 +46,7 @@ namespace Data
             builder.Entity<Player>().HasMany(t => t.Games).WithOne(t => t.Player);
 
             builder.Entity<Game>().HasMany(t => t.Players).WithOne(t => t.Game);
+            builder.Entity<Game>().HasMany(t => t.Matches).WithOne(t => t.Game);
 
             builder.Entity<Character>().HasMany(t => t.Weapons).WithOne(t => t.Character);
         }

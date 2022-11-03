@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
+    <ProjectReference Include="..\BusinessLogin.Web\BusinessLogin.Web.csproj" />
     <ProjectReference Include="..\Data\Data.csproj" />
   </ItemGroup>
 

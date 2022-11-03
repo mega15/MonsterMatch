@@ -15,5 +15,6 @@ namespace Model
         public string Name { get; set; }
         public bool IsClosed { get; set; }
         public virtual ICollection<PlayersByGame>? Players { get; set; }
+        public virtual ICollection<Match>? Matches { get; set; }
     }
 }

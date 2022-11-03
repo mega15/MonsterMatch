@@ -1,6 +1,8 @@
 using SimpleInjector.Lifestyles;
 using SimpleInjector;
 using Data;
+using BusinessLogin.Web.Contracts;
+using BusinessLogic;
 
 Container container = new();
 container.Options.DefaultLifestyle = Lifestyle.CreateHybrid(Lifestyle.Scoped, Lifestyle.Transient);
@@ -23,6 +25,8 @@ builder.Services.AddSimpleInjector(container, options => {
 
 builder.Services.AddSession();
 
+container.Register<IAssetsService, AssetsService>();
+container.Register<ISecurityService, SecurityService>();
 container.Register(() => {
     var context = new ContextBizagiMatch(builder.Configuration["ConnectionStrings:DefaultConnection"]);
     return context;

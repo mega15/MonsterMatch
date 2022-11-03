@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using BusinessLogin.Web.Contracts;
 using Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -14,6 +15,7 @@ namespace MonsterMatchWeb.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly ContextBizagiMatch _context;
+        private readonly IAssetsService _assetsService;
 
         [BindProperty]
         public List<Match> GameMatches { get; set; }
@@ -28,10 +30,11 @@ namespace MonsterMatchWeb.Pages
         [BindProperty]
         public List<PlayersByGame> OldGamesData { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, ContextBizagiMatch context)
+        public IndexModel(ILogger<IndexModel> logger, ContextBizagiMatch context, IAssetsService assetsService)
         {
             _logger = logger;
             _context = context;
+            _assetsService = assetsService;
         }
 
         public async Task<IActionResult> OnGet()
@@ -119,14 +122,14 @@ namespace MonsterMatchWeb.Pages
             return RedirectToPage("./Index");
         }
 
-        private static void SetCharacterImage(Character? character)
+        private void SetCharacterImage(Character? character)
         {
             if (character.CharacterType == CharacterType.Robot)
-                character.ImageUrl = Utils.GetRobotUrl(character.Name);
+                character.ImageUrl = _assetsService.GetRobotUrl(character.Name);
             else
             {
                 //TODO add monster image
-                character.ImageUrl = Utils.GetRobotUrl(character.Name);
+                character.ImageUrl = _assetsService.GetMonsterUrl(character.Name);
             }
         }
     }
