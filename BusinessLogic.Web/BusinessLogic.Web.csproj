@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj" />
+    <ProjectReference Include="..\BusinessLogic.Web.Contracts\BusinessLogic.Web.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

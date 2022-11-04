@@ -1,4 +1,5 @@
 using BusinessLogic;
+using BusinessLogic.Web.Contracts;
 using Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,13 @@ namespace MonsterMatchWeb.Pages
     {
         private readonly ContextBizagiMatch _context;
         private readonly IConfiguration _configuration;
+        private readonly ISecurityService _securityService;
 
-        public LoginModel(ContextBizagiMatch context, IConfiguration configuration)
+        public LoginModel(ContextBizagiMatch context, IConfiguration configuration, ISecurityService securityService)
         {
             _context = context;
             _configuration = configuration;
+            _securityService = securityService;
         }
 
         [BindProperty]
@@ -41,7 +44,7 @@ namespace MonsterMatchWeb.Pages
 
             var player = await _context.Players.FirstOrDefaultAsync(p => p.UserName.Equals(UserName));
 
-            if ((UserName == "sa" && Password == _configuration["AdminPassword"])  || (player != null && Utils.isEqualPassword(Password, player.Pass)))
+            if ((UserName == "sa" && Password == _configuration["AdminPassword"])  || (player != null && _securityService.isEqualPassword(Password, player.Pass)))
             {
                 HttpContext.Session.SetString("LoginId", UserName == "sa" ? "Admin" : player.Id.ToString());
 

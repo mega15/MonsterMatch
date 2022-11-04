@@ -1,13 +1,15 @@
-﻿namespace BusinessLogic
-{
-    public class Utils
-    {
-        public static string GetRobotUrl(string id)
-        {
-            return $"https://robohash.org/{id}";
-        }
+﻿using BusinessLogic.Web.Contracts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-        public static string HashString(string text, string salt = "")
+namespace BusinessLogic
+{
+    public class SecurityService : ISecurityService
+    {
+        public string HashString(string text, string salt = "")
         {
             if (String.IsNullOrEmpty(text))
             {
@@ -30,7 +32,7 @@
             }
         }
 
-        public static bool isEqualPassword(string password, string storedPassword)
+        public bool isEqualPassword(string password, string storedPassword)
         {
             return HashString(password) == storedPassword;
         }
