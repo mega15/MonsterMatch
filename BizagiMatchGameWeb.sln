@@ -11,11 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{22197087-E9A3-46CE-BCBD-BCB328D7BB61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAdminGame", "ConsoleAdminGame\ConsoleAdminGame.csproj", "{35871873-81EA-4B5C-BB25-F45EC1993A5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAdminGame", "ConsoleAdminGame\ConsoleAdminGame.csproj", "{35871873-81EA-4B5C-BB25-F45EC1993A5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic.Web", "BusinessLogic.Web\BusinessLogic.Web.csproj", "{DC2F9027-8BEB-4EC5-BECD-B751F2DFAF77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic.Web", "BusinessLogic.Web\BusinessLogic.Web.csproj", "{DC2F9027-8BEB-4EC5-BECD-B751F2DFAF77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic.Web.Contracts", "BusinessLogic.Web.Contracts\BusinessLogic.Web.Contracts.csproj", "{1BB40234-880A-4EEB-94F5-651D28DE69FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic.Web.Contracts", "BusinessLogic.Web.Contracts\BusinessLogic.Web.Contracts.csproj", "{1BB40234-880A-4EEB-94F5-651D28DE69FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic.Contracts", "BusinessLogic.Contracts\BusinessLogic.Contracts.csproj", "{6E0B079B-36A5-4F53-90A0-59878586C71C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic.Model", "BusinessLogic.Model\BusinessLogic.Model.csproj", "{4FE6BE17-DC24-4416-B779-4ECFE76B2232}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{1BB40234-880A-4EEB-94F5-651D28DE69FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BB40234-880A-4EEB-94F5-651D28DE69FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BB40234-880A-4EEB-94F5-651D28DE69FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E0B079B-36A5-4F53-90A0-59878586C71C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E0B079B-36A5-4F53-90A0-59878586C71C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E0B079B-36A5-4F53-90A0-59878586C71C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E0B079B-36A5-4F53-90A0-59878586C71C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FE6BE17-DC24-4416-B779-4ECFE76B2232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FE6BE17-DC24-4416-B779-4ECFE76B2232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FE6BE17-DC24-4416-B779-4ECFE76B2232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FE6BE17-DC24-4416-B779-4ECFE76B2232}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

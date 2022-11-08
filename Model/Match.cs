@@ -15,6 +15,7 @@ namespace Model
         public Guid Id { get; set; }
         public string Name { get; set; }
         public Character? Character1 { get; set; }
+        public Game Game { get; set; }
         public Weapon? WeaponCharacter1 { get; set; }
         public Character? Character2 { get; set; }
         public Weapon? WeaponCharacter2 { get; set; }
