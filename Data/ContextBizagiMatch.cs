@@ -33,7 +33,7 @@ namespace Data
             if (ConnectionString != null)
                 optionsBuilder.UseSqlServer(ConnectionString);
             else
-                optionsBuilder.UseSqlServer("Data Source=MAOGAMER;Initial Catalog=BizagiMatchGameWeb; User ID=sa;Password=sa");
+                optionsBuilder.UseSqlServer("Data Source=DEV-DEIVITHB1\\MSSQLSERVER17;Initial Catalog=BizagiMatchGameWeb; User ID=sa;Password=Engine2020%");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

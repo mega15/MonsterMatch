@@ -6,10 +6,21 @@ using Data;
 using BusinessLogic.Model;
 using Microsoft.EntityFrameworkCore;
 using Model;
+using SimpleInjector;
 
-ContextBizagiMatch _context = null;
-IGameDataGeneratorService _gameDataGeneratorService = null;
-IMatchesResolverService _matchesResolverService = null;
+Container container = new Container();
+
+container.Register(() => {
+    var context = new ContextBizagiMatch("Data Source=MAOGAMER;Initial Catalog=BizagiMatchGameWeb; User ID=sa;Password=sa");
+    return context;
+}, Lifestyle.Singleton);
+
+container.Register<IGameDataGeneratorService, GameDataGeneratorService>(Lifestyle.Singleton);
+container.Register<IMatchesResolverService, MatchesResolverService>(Lifestyle.Singleton);
+
+ContextBizagiMatch _context = container.GetInstance<ContextBizagiMatch>();
+IGameDataGeneratorService _gameDataGeneratorService = container.GetInstance<IGameDataGeneratorService>();
+IMatchesResolverService _matchesResolverService = container.GetInstance<IMatchesResolverService>();
 
 Console.WriteLine("Welcome to match game console");
 Console.WriteLine("Please select an option");
@@ -54,20 +65,10 @@ void GenerateGamePlayersData()
         _context.Weapons.AddRange(characterWeapons);
     }
 
-    for (int i = 0; i < characters.Count; i++)
+    foreach (var playerByGame in activeGame.Players)
     {
-        PlayersByGame playerByGame = new PlayersByGame()
-        {
-            Character = characters[i],
-            Game = activeGame,
-            GameId = activeGame.Id,
-            Player = characters[i].Player,
-            PlayerId = characters[i].Player.Id,
-            Money = 1000,
-            Points = 0,
-        };
-
-        _context.PlayersByGames.Add(playerByGame);
+        playerByGame.Character = characters.FirstOrDefault(c => c.Player.Id.Equals(playerByGame.PlayerId));
+        _context.Entry(playerByGame).State = EntityState.Modified;
     }
 
     for (int i = 0; i < characters.Count; i++)
@@ -81,6 +82,7 @@ void GenerateGamePlayersData()
             {
                 Id = Guid.NewGuid(),
                 Name = $"{character1.Name} VS {character2.Name}",
+                Game = activeGame,
                 Character1 = character1,
                 Character2 = character2,
             });

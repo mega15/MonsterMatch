@@ -19,7 +19,7 @@ namespace BusinessLogic.Model
             CharacterType = character.CharacterType;
             Weapon = weapon;
         }
-        protected override double DoAttack()
+        public override double DoAttack()
         {
             return (Attack * 1.1) + Weapon.Attack;
         }

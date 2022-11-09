@@ -20,7 +20,7 @@ namespace BusinessLogic.Model
             Weapon = weapon;
         }
 
-        protected override double DoAttack()
+        public override double DoAttack()
         {
             Random random = new Random();
 

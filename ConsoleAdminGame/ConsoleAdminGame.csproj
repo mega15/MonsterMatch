@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="SimpleInjector" Version="5.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BusinessLogic.Contracts\BusinessLogic.Contracts.csproj" />
     <ProjectReference Include="..\BusinessLogic.Model\BusinessLogic.Model.csproj" />
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />

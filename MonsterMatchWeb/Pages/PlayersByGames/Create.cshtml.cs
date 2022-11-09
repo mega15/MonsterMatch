@@ -21,9 +21,12 @@ namespace MonsterMatchWeb.Pages.PlayersByGames
 
         public IActionResult OnGet()
         {
-        ViewData["GamesId"] = new SelectList(_context.Games, "Id", "Name");
-        ViewData["PlayersId"] = new SelectList(_context.Players, "Id", "Name");
-            ViewData["CharactersId"] = new SelectList(_context.Characters, "Id", "Name");
+            var charactersList = _context.Characters.ToList();
+            charactersList.Insert(0, new Character { Id = Guid.Empty, Name="" });
+
+            ViewData["GamesId"] = new SelectList(_context.Games, "Id", "Name");
+            ViewData["PlayersId"] = new SelectList(_context.Players, "Id", "Name");
+            ViewData["CharactersId"] = new SelectList(charactersList, "Id", "Name");
             return Page();
         }
 
@@ -38,6 +41,7 @@ namespace MonsterMatchWeb.Pages.PlayersByGames
         {
             ModelState.Remove("PlayersByGame.Player");
             ModelState.Remove("PlayersByGame.Game");
+            ModelState.Remove("PlayersByGame.Character");
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -45,7 +49,9 @@ namespace MonsterMatchWeb.Pages.PlayersByGames
 
             PlayersByGame.Player = await _context.Players.FindAsync(PlayersByGame.PlayerId);
             PlayersByGame.Game = await _context.Games.FindAsync(PlayersByGame.GameId);
-            PlayersByGame.Character = await _context.Characters.FindAsync(CharacterId);
+
+            if (CharacterId != Guid.Empty)
+                PlayersByGame.Character = await _context.Characters.FindAsync(CharacterId);
 
             _context.PlayersByGames.Add(PlayersByGame);
             await _context.SaveChangesAsync();

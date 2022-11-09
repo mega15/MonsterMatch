@@ -9,7 +9,7 @@ namespace BusinessLogic.Model
 {
     public abstract class Fighter : Character
     {
-        protected abstract double DoAttack();
+        public abstract double DoAttack();
         public Weapon Weapon { get; set; }
     }
 }
