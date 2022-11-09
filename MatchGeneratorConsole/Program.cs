@@ -5,10 +5,23 @@ using BusinessLogic.Contracts;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Model;
+using SimpleInjector;
 
-ContextBizagiMatch _context=null;
-IGameDataGeneratorService _gameDataGeneratorService = null;
-IMatchesResolverService _matchesResolverService = null;
+Container container = new Container();
+
+container.Register(() => {
+    var context = new ContextBizagiMatch("");
+    return context;
+});
+
+container.Register<IGameDataGeneratorService, GameDataGeneratorService>(Lifestyle.Singleton);
+container.Register<IMatchesResolverService, MatchesResolverService>(Lifestyle.Singleton);
+
+container.Verify();
+
+ContextBizagiMatch _context= container.GetInstance<ContextBizagiMatch>();
+IGameDataGeneratorService _gameDataGeneratorService = container.GetInstance<IGameDataGeneratorService>();
+IMatchesResolverService _matchesResolverService = container.GetInstance<IMatchesResolverService>();
 
 Console.WriteLine("Welcome to match game console");
 Console.WriteLine("Please select an option");

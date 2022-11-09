@@ -11,13 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{22197087-E9A3-46CE-BCBD-BCB328D7BB61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogin.Web", "BusinessLogin.Web\BusinessLogin.Web.csproj", "{4098ED67-33F4-41E0-9683-1B53501B068B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogin.Web", "BusinessLogin.Web\BusinessLogin.Web.csproj", "{4098ED67-33F4-41E0-9683-1B53501B068B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchGeneratorConsole", "MatchGeneratorConsole\MatchGeneratorConsole.csproj", "{4D6D332B-EFDD-44AD-8EF9-9B54C7809675}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchGeneratorConsole", "MatchGeneratorConsole\MatchGeneratorConsole.csproj", "{4D6D332B-EFDD-44AD-8EF9-9B54C7809675}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogin.Web.Contracts", "BusinessLogin.Web.Contracts\BusinessLogin.Web.Contracts.csproj", "{0C0289E0-986B-450D-AF85-BD37374E3381}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogin.Web.Contracts", "BusinessLogin.Web.Contracts\BusinessLogin.Web.Contracts.csproj", "{0C0289E0-986B-450D-AF85-BD37374E3381}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic.Contracts", "BusinessLogic.Contracts\BusinessLogic.Contracts.csproj", "{23A4A579-8914-49DE-BA0F-1394EB0FD378}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic.Contracts", "BusinessLogic.Contracts\BusinessLogic.Contracts.csproj", "{23A4A579-8914-49DE-BA0F-1394EB0FD378}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic.Model", "BusinessLogic.Model\BusinessLogic.Model.csproj", "{BC1E1B5F-E160-4382-AF4D-A187EF5436E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{23A4A579-8914-49DE-BA0F-1394EB0FD378}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23A4A579-8914-49DE-BA0F-1394EB0FD378}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23A4A579-8914-49DE-BA0F-1394EB0FD378}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC1E1B5F-E160-4382-AF4D-A187EF5436E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC1E1B5F-E160-4382-AF4D-A187EF5436E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC1E1B5F-E160-4382-AF4D-A187EF5436E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC1E1B5F-E160-4382-AF4D-A187EF5436E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
